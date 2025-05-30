@@ -1,0 +1,817 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #FFF8F0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Logo at the top-left of the body */
+body .logo {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  height: 48px;
+}
+
+/* Main container for centering the auth card */
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* Authentication card styles */
+.auth-card {
+  background-color: #F0F0F0;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 800px; /* Fixed width of 800px */
+  height: 550px;
+  margin: 0 auto;
+}
+
+/* Home-specific card styling */
+.home-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Input field styles */
+.input-group {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.input-group input {
+  width: 50%;
+  padding: 12px;
+  border: transparent;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  outline: none;
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.input-group input::placeholder {
+  color: #888;
+  opacity: 0.7;
+}
+
+.input-group input:focus::placeholder {
+  opacity: 0.3;
+}
+
+/* Password toggle icon styles */
+.input-group .password-toggle {
+  position: absolute;
+  right: 26%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1F2A44;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 16px;
+  padding: 0;
+}
+
+/* Error message styles */
+.error-text {
+  color: #FF0000;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Button styles */
+button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #D3D3D3;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  color: #1F2A44;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+button.play-button {
+  background-color: #1F2A44;
+  color: #FFFFFF;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+button.play-button:hover {
+  background-color: #15325A; /* Darker shade for hover effect */
+}
+
+button.logout-button {
+  background-color: #D32F2F; /* Red for logout */
+  color: #FFFFFF;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+button.logout-button:hover {
+  background-color: #9A1D1D; /* Darker red for hover */
+}
+
+button.back-button {
+  width: 32px;
+  height: 32px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  border: 1px solid #D3D3D3;
+}
+
+button.back-button:hover {
+  background-color: #F0F0F0;
+}
+
+/* Link styles */
+a {
+  color: #1F2A44;
+  text-decoration: none;
+}
+
+/* Flex container for navigation (inside auth card) */
+.nav-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1F2A44;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1F2A44;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1F2A44;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.user-info {
+  margin-top: 16px;
+}
+
+.user-email {
+  color: #15325A; /* Slightly darker for emphasis */
+  font-weight: bold;
+}
+
+.home-content {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-stats {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stat-box {
+  padding: 10px;
+  background-color: #F0F0F0;
+  border-radius: 4px;
+  color: #1F2A44;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.stat-box span {
+  color: #2E7D32; /* Green from game design for emphasis */
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+  margin-left: 700px;
+}
+
+/* Logo at the top-left of the body */
+body .logo {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  height: 48px;
+}
+
+/* Main container for centering the game */
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  flex-direction: column;
+}
+
+/* Game container styles */
+.game-container {
+  width: 800px;
+  background-color: #F0F0F0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin-top: 20px;
+}
+
+/* Game header with navigation and theme */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-container .logo {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(to right, #FFD700, #00CED1);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.theme {
+  font-size: 16px;
+  color: #1F2A44;
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* Back button styling */
+.back-button {
+  width: 32px;
+  height: 32px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #D3D3D3;
+  font-size: 18px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #F0F0F0;
+}
+
+/* Game content layout */
+.game-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Game grid */
+.game-grid {
+  width: 400px;
+  height: 400px;
+  background-color: #E9FFEF;
+  border-radius: 4px;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Game panels container */
+.game-panels {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Panel section shared styles */
+.panel-section {
+  border-radius: 8px;
+  padding: 12px;
+  color: #1F2A44;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Timer section */
+.timer-section {
+  background-color: #42A5F5;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+/* Days section */
+.days-section {
+  background-color: #D32F2F;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+/* Badges section */
+.badges-section {
+  background-color: #2E7D32;
+  color: #FFFFFF;
+  padding: 16px;
+  line-height: 1.6;
+}
+
+.badges-section .progress {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* Found words section */
+.found-words-section {
+  background-color: #2E7D32;
+  color: #FFFFFF;
+  padding: 16px;
+  min-height: 120px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.found-words-list {
+  font-size: 14px;
+}
+
+.found-words-list ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.found-words-list li {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.placeholder-words {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+/* Stats section */
+.stats-section {
+  background-color: #FFFFFF;
+  color: #1F2A44;
+  padding: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #F0F0F0;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.stat-value {
+  color: #2E7D32;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+/* Daily progress section */
+.daily-progress-section {
+  background-color: #FFFFFF;
+  color: #1F2A44;
+  padding: 16px;
+}
+
+.progress-info {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Leaderboard section */
+.leaderboard-section {
+  background-color: #1E88E5;
+  color: #FFFFFF;
+  padding: 16px;
+}
+
+.leaderboard-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 14px;
+  align-items: center;
+}
+
+.entry .rank {
+  font-weight: bold;
+  width: 20px;
+}
+
+.entry .name {
+  flex: 2;
+}
+
+.entry .country {
+  color: rgba(255, 255, 255, 0.8);
+  flex: 1;
+}
+
+.entry .points {
+  font-weight: bold;
+}
+
+/* Mobile styles for authentication pages */
+@media (max-width: 768px) {
+  /* Mobile-specific body adjustments */
+  body {
+    background-color: #FFF8F0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Logo positioning for mobile */
+  body .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    height: 40px;
+    z-index: 10;
+  }
+
+  /* Main container adjustments for mobile */
+  .main-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    margin-top: 0;
+  }
+
+  /* Auth card mobile styling - reduced size */
+  .auth-card {
+    background-color: #F0F0F0;
+    padding: 24px 20px;
+    border-radius: 0px;
+    box-shadow: none;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    min-height: auto;
+    margin: 0;
+    margin-top: 50px;
+  }
+
+  /* Navigation container mobile - hide back button */
+  .nav-container {
+    display: none;
+  }
+
+  /* Back button mobile - completely hidden */
+  .nav-container .back-button,
+  button.back-button {
+    display: none;
+  }
+
+  /* Headers mobile styling */
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1F2A44;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #1F2A44;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+    overflow: visible;
+    box-sizing: content-box;
+    margin-left: 330px;
+    font-size: 15px;
+}
+
+  /* Input groups mobile */
+  .input-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    outline: none;
+    display: block;
+    margin: 0;
+    font-size: 13px;
+    color: #1F2A44;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  }
+
+  .input-group input::placeholder {
+    color: #999;
+    opacity: 0.8;
+  }
+
+  .input-group input:focus {
+    box-shadow: 0 2px 8px rgba(31, 42, 68, 0.15);
+  }
+
+  .input-group input:focus::placeholder {
+    opacity: 0.4;
+  }
+
+  /* Password toggle for mobile */
+  .input-group .password-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1F2A44;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 18px;
+    padding: 0;
+  }
+
+  /* Error text mobile */
+  .error-text {
+    color: #FF0000;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  /* Button styles mobile */
+  button {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #D3D3D3;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #1F2A44;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 16px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  /* Primary button (Login/Sign Up) */
+  button[type="submit"] {
+    background-color: white;
+    color: #020202;
+    border: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    max-width: 200px;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #15325A;
+  }
+
+  button[type="submit"]:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+
+  /* Google sign-in button mobile */
+  button:has(img[alt="Google"]) {
+    background-color: #FFFFFF;
+    border: 1px solid #D3D3D3;
+    color: #1F2A44;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  button:has(img[alt="Google"]):hover {
+    background-color: #F8F8F8;
+  }
+
+  /* Remember me and forgot password section */
+  .auth-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  /* Remember me checkbox styling */
+  .remember-me-container {
+    display: flex;
+    align-items: center;
+    color: #1F2A44;
+    font-size: 14px;
+  }
+
+  .remember-me-container input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+
+  /* Links mobile */
+  a {
+    color: #1F2A44;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Text sections mobile */
+  p {
+    text-align: center;
+    color: #1F2A44;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  /* "Or" divider styling */
+  .divider-text {
+    text-align: center;
+    color: #666;
+    margin: 24px 0;
+    font-size: 14px;
+    position: relative;
+  }
+
+  .divider-text::before,
+  .divider-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background-color: #D3D3D3;
+  }
+
+  .divider-text::before {
+    left: 0;
+  }
+
+  .divider-text::after {
+    right: 0;
+  }
+
+  /* Forgot Password page specific styles */
+  .forgot-password-container h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .forgot-password-container p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* Form container mobile */
+  form {
+    width: 100%;
+  }
+
+  /* Inline styles override for mobile */
+  .auth-card div[style*="display: flex"][style*="width: 50%"] {
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+  }
+
+  .auth-card button[style*="width: 30%"],
+  .auth-card button[style*="width: 50%"] {
+    width: 100% !important;
+    margin: 0 0 16px 0 !important;
+  }
+
+  /* Google icon in button */
+  button img[alt="Google"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Account links at bottom */
+  .account-links {
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .account-links p {
+    font-size: 14px;
+    color: #1F2A44;
+    margin-bottom: 0;
+  }
+
+  .account-links a {
+    color: #1F2A44;
+    font-weight: 600;
+  }
+}
+
