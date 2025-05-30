@@ -103,11 +103,26 @@ const Game = () => {
     for (let i = 0; i < 20; i++) for (let j = 0; j < 20; j++) if (!grid[i][j]) grid[i][j] = letters.charAt(Math.floor(Math.random() * 26));
   };
 
-  const handleMouseDown = (e) => {
+  const getCellCoordinates = (e, isTouch = false) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const cellSize = rect.width / 20;
-    const col = Math.floor((e.clientX - rect.left) / cellSize);
-    const row = Math.floor((e.clientY - rect.top) / cellSize);
+    let clientX, clientY;
+    if (isTouch) {
+      const touch = e.touches[0];
+      clientX = touch.clientX;
+      clientY = touch.clientY;
+    } else {
+      clientX = e.clientX;
+      clientY = e.clientY;
+    }
+    const col = Math.floor((clientX - rect.left) / cellSize);
+    const row = Math.floor((clientY - rect.top) / cellSize);
+    return { row, col };
+  };
+
+  const handleStart = (e, isTouch = false) => {
+    e.preventDefault();
+    const { row, col } = getCellCoordinates(isTouch ? e : e, isTouch);
     if (row >= 0 && row < 20 && col >= 0 && col < 20) {
       setDragStart([row, col]);
       setDragEnd([row, col]);
@@ -115,12 +130,10 @@ const Game = () => {
     }
   };
 
-  const handleMouseMove = (e) => {
+  const handleMove = (e, isTouch = false) => {
     if (!dragStart) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const cellSize = rect.width / 20;
-    const col = Math.floor((e.clientX - rect.left) / cellSize);
-    const row = Math.floor((e.clientY - rect.top) / cellSize);
+    e.preventDefault();
+    const { row, col } = getCellCoordinates(isTouch ? e : e, isTouch);
     if (row >= 0 && row < 20 && col >= 0 && col < 20) {
       const startRow = dragStart[0], startCol = dragStart[1];
       const rowDiff = row - startRow, colDiff = col - startCol;
@@ -146,12 +159,21 @@ const Game = () => {
     }
   };
 
-  const handleMouseUp = () => {
+  const handleEnd = (e) => {
+    e.preventDefault();
     if (dragStart && dragEnd) checkWord();
     setDragStart(null);
     setDragEnd(null);
     setHighlightedCells([]);
   };
+
+  const handleMouseDown = (e) => handleStart(e, false);
+  const handleMouseMove = (e) => handleMove(e, false);
+  const handleMouseUp = (e) => handleEnd(e);
+
+  const handleTouchStart = (e) => handleStart(e, true);
+  const handleTouchMove = (e) => handleMove(e, true);
+  const handleTouchEnd = (e) => handleEnd(e);
 
   const checkWord = () => {
     if (!dragStart || !dragEnd || highlightedCells.length === 0) return;
@@ -193,11 +215,11 @@ const Game = () => {
       alignItems: 'center',
       justifyContent: 'center',
       fontWeight: 'bold',
-      fontSize: isMobile || isExtraSmall ? (isExtraSmall ? '0.6rem' : '0.7rem') : '0.8rem',
+      fontSize: isMobile || isExtraSmall ? (isExtraSmall ? '0.75rem' : '0.85rem') : '0.8rem',
       transition: 'all 0.2s',
       cursor: 'pointer',
       userSelect: 'none',
-      fontFamily: 'Inter, sans-serif', // Apply Inter to grid cells
+      fontFamily: 'Inter, sans-serif',
     };
   };
 
@@ -232,7 +254,7 @@ const Game = () => {
     <div style={{
       minHeight: '100vh',
       backgroundColor: isMobile ? '#fff8f0' : '#fff8f0',
-      fontFamily: 'Inter, sans-serif', // Set Inter as the default font
+      fontFamily: 'Inter, sans-serif',
       padding: isMobile ? 0 : '20px',
       position: 'relative',
       margin: 0,
@@ -544,19 +566,23 @@ const Game = () => {
                 gridTemplateColumns: 'repeat(20, 1fr)',
                 gridTemplateRows: 'repeat(20, 1fr)',
                 width: '100%',
-                maxWidth: isMobile ? (isExtraSmall ? '300px' : '350px') : '600px',
-                height: isMobile ? (isExtraSmall ? '300px' : '350px') : '600px',
+                maxWidth: isMobile ? (isExtraSmall ? '360px' : '400px') : '600px',
+                height: isMobile ? (isExtraSmall ? '360px' : '400px') : '600px',
                 backgroundColor: '#f0f8f0',
                 gap: '1px',
                 borderRadius: '12px',
                 overflow: 'hidden',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                 border: '2px solid #e8f5e8',
+                touchAction: 'none', // Prevents default scrolling behavior during touch drag
               }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {grid.map((row, rowIndex) =>
                 row.map((letter, colIndex) => (
