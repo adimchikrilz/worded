@@ -345,7 +345,8 @@ const Game = () => {
               style={{ 
                 height: '40px',
                 width: 'auto',
-                objectFit: 'contain'
+                objectFit: 'contain',
+                marginLeft: '50px'
               }}
             />
           </div>
@@ -354,10 +355,10 @@ const Game = () => {
           <div style={{ 
             textAlign: 'left'
           }}>
-            <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#333', marginBottom: '8px' }}>
+            <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#333', marginBottom: '8px', marginLeft: '50px' }}>
               Today's Theme: Kitchen
             </div>
-            <div style={{ fontSize: '16px', color: '#666' }}>
+            <div style={{ fontSize: '16px', color: '#666', marginLeft: '50px' }}>
               Find {words.length} words related to this theme
             </div>
           </div>
@@ -436,7 +437,7 @@ const Game = () => {
                 justifyContent: 'center',
                 gap: '8px'
               }}>
-                <i className="fas fa-heart" style={{ fontSize: '14px' }}></i>
+                <i className="fas fa-fire" style={{ fontSize: '14px' }}></i>
                 0 days
               </div>
             </div>
