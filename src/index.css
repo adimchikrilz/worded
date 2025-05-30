@@ -515,7 +515,7 @@ body .logo {
   body {
     background-color: #FFF8F0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   /* Logo positioning for mobile */
